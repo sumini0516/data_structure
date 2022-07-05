@@ -16,6 +16,20 @@ def printNodes(start):
     print()
 
 
+def findNode(findData):
+    global memory, head, current, pre
+
+    current = head
+    if current.data == findData:
+        return current
+
+    while current.link != None:
+        current = current.link
+        if current.data == findData:
+            return current
+        return Node()
+
+
 # 전역변수 선언 부분
 memory = []
 head, current, pre = None, None, None
@@ -36,3 +50,12 @@ if __name__ == "__main__":
         memory.append(node)
 
     printNodes(head)
+
+    fNode = findNode("amy")
+    print(fNode.data)
+
+    fNode = findNode("betty")
+    print(fNode.data)
+
+    fNode = findNode("flora")
+    print(fNode.data)

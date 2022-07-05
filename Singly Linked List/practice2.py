@@ -16,6 +16,25 @@ def printNodes(start):
     print()
 
 
+def deleteNode(deleteData):
+    global memory, head, current, pre
+
+    if head.data == deleteData:
+        current = head
+        head = head.link
+        del (current)
+        return
+
+    current = head
+    while current.head != None:
+        pre = current
+        current = current.link
+        if current.data == deleteData:
+            pre.link = current.link
+            del (current)
+            return
+
+
 # 전역변수 선언 부분
 memory = []
 head, current, pre = None, None, None
@@ -35,4 +54,10 @@ if __name__ == "__main__":
         pre.link = node
         memory.append(node)
 
+    printNodes(head)
+
+    deleteNode("amy")
+    printNodes(head)
+
+    deleteNode("betty")
     printNodes(head)
